@@ -1,5 +1,6 @@
 # lista_enlazada.rb
 require_relative 'nodo'
+require 'rainbow'
 
 class ListaEnlazada
     attr_accessor :cabeza
@@ -87,6 +88,19 @@ class ListaEnlazada
 
         # Asigna el nodo siguiente al nodo siguiente del nodo actual. Esto se hace para eliminar el nodo que contiene el valor que se desea eliminar de la lista enlazada.
         nodo_actual.siguiente = nodo_actual.siguiente.siguiente
+    end
+    # Fin del método
+
+    # Método para imprimir la lista en consola
+    def imprimir
+
+        nodo_actual = @cabeza
+        while nodo_actual != nil
+            puts nodo_actual.valor
+            puts Rainbow('↓').green
+            nodo_actual = nodo_actual.siguiente
+        end
+        puts 'null'
     end
     # Fin del método
 end
