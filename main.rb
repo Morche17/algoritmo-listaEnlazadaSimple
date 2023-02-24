@@ -1,18 +1,16 @@
 # main.rb
-require_relative 'src/lista_enlazada'
+require_relative 'src/lista_ordenada'
 
-lista = ListaEnlazada.new
+lista = ListaOrdenada.new
 lista.insertar_al_principio(3)
-lista.insertar_al_principio(2)
+lista.insertar_al_principio(6)
 lista.insertar_al_principio(1)
 lista.insertar_al_final(9)
 lista.insertar_al_final(8)
-lista.insertar_entre_nodos(4, 3)
-lista.eliminar(2)
+#lista.insertar_entre_nodos(4, 3)
+#lista.eliminar(6)
+lista.imprimir
 
-nodo_actual = lista.cabeza
-while nodo_actual != nil
-    puts nodo_actual.valor
-    nodo_actual = nodo_actual.siguiente
-end
-puts 'null'
+lista.ordenar
+puts "\nLista ordenada:"
+puts "\n #{lista.imprimir}"
