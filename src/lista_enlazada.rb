@@ -50,7 +50,6 @@ class ListaEnlazada
 
         end
 
-        # Esta línea inicia una condición que verifica si el nodo actual es nulo. Si es así, significa que el valor después del cual se debe insertar el nuevo nodo no se encuentra en la lista enlazada, y la función simplemente regresa.
         if nodo_actual.nil?
             return
         end
