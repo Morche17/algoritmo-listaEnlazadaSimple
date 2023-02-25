@@ -92,14 +92,17 @@ class ListaEnlazada
 
     # Método para imprimir la lista en consola
     def imprimir
-
-        nodo_actual = @cabeza
-        while nodo_actual != nil
-            puts nodo_actual.valor
-            puts Rainbow('↓').green
-            nodo_actual = nodo_actual.siguiente
+        temp = @cabeza
+        valores = ''
+        
+        loop do
+            valores += Rainbow("#{temp.valor} --> ").green
+            temp = temp.siguiente
+            break if temp.nil?
         end
-        puts 'null'
+        
+        puts "#{valores}null"
     end
+      
     # Fin del método
 end
