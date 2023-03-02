@@ -13,7 +13,7 @@ class ListaOrdenada < ListaEnlazada
         valores_ordenados = valores.sort
         nueva_lista = ListaEnlazada.new
 
-        progressbar = ProgressBar.create(title: "Ordenando elementos", total: valores_ordenados.length)
+        progressbar = ProgressBar.create(title: "Ordenando elementos por método de burbuja", total: valores_ordenados.length)
 
         valores_ordenados.each do |valor|
             nueva_lista.insertar_al_final(valor)
@@ -26,7 +26,7 @@ class ListaOrdenada < ListaEnlazada
     def seleccion
 
       ahorita = @cabeza
-      pb = ProgressBar.create(title: "Ordenando elementos", total: tamaño)
+      pb = ProgressBar.create(title: "Ordenando elementos por método de selección", total: tamaño)
 
       while ahorita
         min_nodo = ahorita
@@ -47,6 +47,37 @@ class ListaOrdenada < ListaEnlazada
       end
       pb.finish
     end
+
+    def insercion
+      return if @cabeza.nil?
+      pb = ProgressBar.create(title: "Ordenando elementos por método de inserción", total: tamaño)
+
+      ahorita = @cabeza
+      ordenado = nil
+
+      while ahorita
+        nodo_siguiente = ahorita.siguiente
+
+        if ordenado.nil? || ordenado.valor >= ahorita.valor
+          ahorita.siguiente = ordenado
+          ordenado = ahorita
+        else
+          buscar = ordenado
+          while buscar.siguiente && buscar.siguiente.valor < ahorita.valor
+            buscar = buscar.siguiente
+          end
+          ahorita.siguiente = buscar.siguiente
+          buscar.siguiente = ahorita
+        end
+
+        ahorita = nodo_siguiente
+        pb.increment
+      end
+      pb.finish
+      
+      @cabeza = ordenado
+    end
+
 
     def tamaño
       ahorita = @cabeza
