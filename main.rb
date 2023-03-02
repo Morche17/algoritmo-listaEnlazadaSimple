@@ -12,7 +12,7 @@ for i in(0..70000)
 end
 
 iniciar_tiempo = Time.now
-lista.seleccion
+lista.insercion
 final_tiempo = Time.now
 # puts "\nLista ordenada:"
 # puts "\n #{lista.imprimir}"
