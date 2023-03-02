@@ -1,9 +1,11 @@
 # main.rb
 require_relative 'src/lista_ordenada'
+require 'rainbow/refinement'
+using Rainbow
 
 lista = ListaOrdenada.new
 
-for i in(0..10000)
+for i in(0..70000)
 
     lista.insertar_al_principio(rand(1..101))
 
@@ -23,4 +25,15 @@ final_tiempo = Time.now
 # lista.eliminar(6)
 lista.imprimir
 
-puts "\nAl algoritmo le tomó #{final_tiempo - iniciar_tiempo} segundos en ejecutar."
+lapso_tiempo = final_tiempo - iniciar_tiempo
+
+segundos = lapso_tiempo.to_i
+milisegundos = ((lapso_tiempo - segundos) * 1000).to_i
+minutos = (segundos/60) % 60
+horas = (segundos/3600) % 24
+días = segundos / (3600 * 24)
+segundos = segundos % 60
+
+puts "\nTiempo de ejecución:".underline + " #{días} ".bright + "días, " +
+  "#{horas} ".bright + "horas, " + "#{minutos} ".bright + "minutos, " +
+  "#{segundos} ".bright + "segundos y " + "#{milisegundos} ".bright + "milésimas de segundo."
