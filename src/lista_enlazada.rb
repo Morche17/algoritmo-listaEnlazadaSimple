@@ -1,6 +1,7 @@
 # lista_enlazada.rb
 require_relative 'nodo'
-require 'rainbow'
+require 'rainbow/refinement'
+using Rainbow
 
 class ListaEnlazada
     attr_accessor :cabeza
@@ -96,7 +97,7 @@ class ListaEnlazada
         valores = ''
         
         loop do
-            valores += Rainbow("#{temp.valor} --> ").green
+          valores += "#{temp.valor}".green + " --> "
             temp = temp.siguiente
             break if temp.nil?
         end
